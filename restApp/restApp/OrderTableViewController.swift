@@ -8,8 +8,69 @@
 
 import UIKit
 
+//Delegate protocol
+protocol AddToOrderDelegate {
+    func added(menuItem: MenuItem)
+}
+//Delegate protocol
+
+//Delegate Class
+class OrderTableViewController: UITableViewController,
+AddToOrderDelegate {
+    
+    func added(menuItem: MenuItem) {
+        menuItems.append(menuItem)
+        let count = menuItems.count
+        let indexPath = IndexPath(row: count-1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    // The rest of OrderTableViewController has been omitted
+}
+
+class MenuItemDetailViewController: UIViewController {
+    
+    var delegate: AddToOrderDelegate?
+    
+    @IBAction func orderButtonTapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            self.addToOrderButton.transform =
+                CGAffineTransform(scaleX: 3.0, y: 3.0)
+            self.addToOrderButton.transform =
+                CGAffineTransform(scaleX: 1.0, y: 1.0)
+        }
+        delegate?.added(menuItem: menuItem)
+    }
+    
+    //...
+}
+
+class MenuItemDetailViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+        setupDelegate()
+    }
+    
+    func setupDelegate() {
+        if let navController =
+            tabBarController?.viewControllers?.last as?
+            UINavigationController,
+            let orderTableViewController =
+            navController.viewControllers.first as?
+            OrderTableViewController {
+            delegate = orderTableViewController
+        }
+    }
+    
+    //...
+}
+//Delegate Class
+
 class OrderTableViewController: UITableViewController {
 
+    var menuItems = [MenuItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,16 +88,33 @@ class OrderTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    //My Override
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return menuItems.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:
+            "OrderCellIdentifier", for: indexPath)
+        configure(cell: cell, forItemAt: indexPath)
+        return cell
+    }
+    
+    func configure(cell: UITableViewCell, forItemAt indexPath:IndexPath) {
+        let menuItem = menuItems[indexPath.row]
+        cell.textLabel?.text = menuItem.name
+        cell.detailTextLabel?.text = String(format: "$%.2f",
+                                            menuItem.price)
+    }
+    //My Overrides
+    
 
+    
+    
+    
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
