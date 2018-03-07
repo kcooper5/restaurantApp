@@ -10,6 +10,8 @@ import Foundation
 
 class MenuController {
     let baseURL = URL(string: "http://localhost:8090/")!
+    static let shared = MenuController()
+    
     
     func fetchCategories(completion: @escaping ([String]?) -> Void){
         let categoryURL = baseURL.appendingPathComponent("categories")
@@ -26,13 +28,13 @@ class MenuController {
         }
     }
     
-    func submitOrder(menuIds: [Int], completion: (Int?) -> Void) {
+    func submitOrder(menuIds: [Int], completion: @escaping (Int?) -> Void) {
         let orderURL = baseURL.appendingPathComponent("order")
         var request = URLRequest(url: orderURL)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField:"Content-Type")
         let data: [String: Any] = ["menuIds": menuIds]
-        let jsonData = try? JSONSerialization.data(withJSONObject:data, options: []) request.httpBody = jsonData
+        let jsonData = try? JSONSerialization.data(withJSONObject:data, options: []); request.httpBody = jsonData
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             if let data = data,
@@ -64,4 +66,4 @@ class MenuController {
             }
         }
     }
-
+}

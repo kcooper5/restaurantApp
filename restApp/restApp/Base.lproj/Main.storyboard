@@ -36,7 +36,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="An9-dt-UaD" kind="show" id="3de-r3-1Nw"/>
+                                    <segue destination="An9-dt-UaD" kind="show" identifier="MenuSegue" id="3de-r3-1Nw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -45,13 +45,13 @@
                             <outlet property="delegate" destination="NQF-mp-6uv" id="YBS-5e-Ta0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bone Apple Teeth" id="UYH-Qf-7fd"/>
+                    <navigationItem key="navigationItem" title="BonAplTeth" id="UYH-Qf-7fd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OdK-wd-HR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="460" y="-123"/>
         </scene>
-        <!--Menu Table View Controller-->
+        <!--Menu-->
         <scene sceneID="R3l-8j-4tL">
             <objects>
                 <tableViewController id="An9-dt-UaD" customClass="MenuTableViewController" customModule="restApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,15 +60,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WLy-EC-K0C">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MenuCellIdentifier" textLabel="bzi-kT-jG1" detailTextLabel="1lu-l2-7pr" style="IBUITableViewCellStyleValue1" id="WLy-EC-K0C">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WLy-EC-K0C" id="EZU-kf-iPr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bzi-kT-jG1">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1lu-l2-7pr">
+                                            <rect key="frame" x="296" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="nyN-aw-keX" kind="show" id="MJr-LJ-tSM"/>
+                                    <segue destination="pGV-bN-tuW" kind="show" identifier="MenuDetailSegue" id="vif-JB-eZw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,25 +93,26 @@
                             <outlet property="delegate" destination="An9-dt-UaD" id="f32-du-jzz"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Menu" id="rtb-Eq-aet"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0W-kn-c0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1228" y="-122"/>
         </scene>
-        <!--Menu Detail View Controller-->
-        <scene sceneID="3fr-B9-bHz">
+        <!--Menu Item Detail View Controller-->
+        <scene sceneID="GgN-1G-dJ9">
             <objects>
-                <viewController id="nyN-aw-keX" customClass="MenuDetailViewController" customModule="restApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FbE-Wn-6Pr">
+                <viewController id="pGV-bN-tuW" customClass="MenuItemDetailViewController" customModule="restApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yN1-fr-3MA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Jr6-dq-Ff0"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hPl-bx-eqG"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WR8-Qk-Fvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWP-aT-NuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-124"/>
+            <point key="canvasLocation" x="1980" y="-120"/>
         </scene>
         <!--Order-->
         <scene sceneID="Vjt-H9-WVE">

@@ -1,15 +1,28 @@
 //
-//  MenuDetailViewController.swift
+//  MenuItemDetailViewController.swift
 //  restApp
 //
-//  Created by user131292 on 3/7/18.
+//  Created by cyber on 3/7/18.
 //  Copyright © 2018 kcooper5. All rights reserved.
 //
 
 import UIKit
 
-class MenuDetailViewController: UIViewController {
+class MenuItemDetailViewController: UIViewController {
 
+    var menuItem: MenuItem!
+    
+    //My Override
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MenuDetailSegue" {
+            let menuItemDetailViewController = segue.destination
+                as! MenuItemDetailViewController
+            let index = tableView.indexPathForSelectedRow!.row
+            menuItemDetailViewController.menuItem = menuItem[index]
+        }
+    }
+    //My Override
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
