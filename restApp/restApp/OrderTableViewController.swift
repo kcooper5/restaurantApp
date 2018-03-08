@@ -106,6 +106,14 @@ class OrderTableViewController: UITableViewController, AddToOrderDelegate {
             orderConfirmationViewController.minutes = orderMinutes
         }
     }
+    
+    @IBAction func unwindToOrderList(segue: UIStoryboardSegue) {
+        if segue.identifier == "DismissConfirmation" {
+            menuItems.removeAll()
+            tableView.reloadData()
+            updateBadgeNumber()
+        }
+    }
 
     
     override func viewDidLoad() {
