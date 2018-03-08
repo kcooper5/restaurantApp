@@ -17,7 +17,7 @@ class MenuController {
     
     func fetchCategories(completion: @escaping ([String]?) -> Void){
         let categoryURL = baseURL.appendingPathComponent("categories")
-        let task = URLSession.shared.dataTask(with: categoryURL) {
+        _ = URLSession.shared.dataTask(with: categoryURL) {
             (data, response, error) in
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
@@ -36,7 +36,7 @@ class MenuController {
             request.setValue("application/json", forHTTPHeaderField:"Content-Type")
         let data: [String: Any] = ["menuIds": menuIds]
         let jsonData = try? JSONSerialization.data(withJSONObject:data, options: []); request.httpBody = jsonData
-        let task = URLSession.shared.dataTask(with: request) {
+        _ = URLSession.shared.dataTask(with: request) {
             (data, response, error) in
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
@@ -55,8 +55,8 @@ class MenuController {
             components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
         let menuURL = components.url!
         
-        let task = URLSession.shared.dataTask(with: menuURL) { (data, response, error) in
-            var menuItems = [MenuItem]()
+        _ = URLSession.shared.dataTask(with: menuURL) { (data, response, error) in
+            _ = [MenuItem]()
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                 let menuArray = jsonDictionary?["items"] as?

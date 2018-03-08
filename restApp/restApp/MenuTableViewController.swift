@@ -61,6 +61,11 @@ class MenuTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt
+        indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func configure(cell: UITableViewCell, forItemAt indexPath:
         IndexPath) {
         let menuItem = menuItems[indexPath.row]

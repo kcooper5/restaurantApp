@@ -35,7 +35,7 @@ class MenuItemDetailViewController: UIViewController {
         if segue.identifier == "MenuDetailSegue" {
             let menuItemDetailViewController = segue.destination
                 as! MenuItemDetailViewController
-            let index = tableView.indexPathForSelectedRow!.row
+            let index = tableview.indexPathForSelectedRow!.row
             menuItemDetailViewController.menuItem = menuItem[index]
         }
     }
