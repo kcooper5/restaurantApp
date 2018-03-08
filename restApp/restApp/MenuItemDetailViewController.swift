@@ -17,14 +17,17 @@ class MenuItemDetailViewController: UIViewController {
     @IBOutlet weak var addToOrderButton: UIButton!
     
     var menuItem: MenuItem!
+    var delegate: AddToOrderDelegate?
+    
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.3) {
             self.addToOrderButton.transform =
-                CGAffineTransform(scaleX: 3.0, y: 3.0)
+            CGAffineTransform(scaleX: 3.0, y: 3.0)
             self.addToOrderButton.transform =
-                CGAffineTransform(scaleX: 1.0, y: 1.0)
+            CGAffineTransform(scaleX: 1.0, y: 1.0)
         }
+        delegate?.added(menuItem: menuItem)
     }
     
     //My Override
@@ -40,9 +43,21 @@ class MenuItemDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         updateUI()
+        setupDelegate()
     }
+    
+    func setupDelegate() {
+        if let navController =
+            tabBarController?.viewControllers?.last as?
+            UINavigationController,
+            let orderTableViewController =
+            navController.viewControllers.first as?
+            OrderTableViewController {
+            delegate = orderTableViewController
+        }
+    }
+    
     func updateUI() {
         titleLabel.text = menuItem.name
         priceLabel.text = String(format: "$%.2f", menuItem.price)

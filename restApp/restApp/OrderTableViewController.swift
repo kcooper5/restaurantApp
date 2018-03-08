@@ -8,87 +8,24 @@
 
 import UIKit
 
-//Delegate protocol
 protocol AddToOrderDelegate {
     func added(menuItem: MenuItem)
 }
-//Delegate protocol
 
-//Delegate Class
-class OrderTableViewController: UITableViewController,
-AddToOrderDelegate {
+class OrderTableViewController: UITableViewController, AddToOrderDelegate {
+
+    var menuItems = [MenuItem]()
+    
+    //My Override
     
     func added(menuItem: MenuItem) {
         menuItems.append(menuItem)
         let count = menuItems.count
         let indexPath = IndexPath(row: count-1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        updateBadgeNumber()
     }
     
-    // The rest of OrderTableViewController has been omitted
-}
-
-class MenuItemDetailViewController: UIViewController {
-    
-    var delegate: AddToOrderDelegate?
-    
-    @IBAction func orderButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            self.addToOrderButton.transform =
-                CGAffineTransform(scaleX: 3.0, y: 3.0)
-            self.addToOrderButton.transform =
-                CGAffineTransform(scaleX: 1.0, y: 1.0)
-        }
-        delegate?.added(menuItem: menuItem)
-    }
-    
-    //...
-}
-
-class MenuItemDetailViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateUI()
-        setupDelegate()
-    }
-    
-    func setupDelegate() {
-        if let navController =
-            tabBarController?.viewControllers?.last as?
-            UINavigationController,
-            let orderTableViewController =
-            navController.viewControllers.first as?
-            OrderTableViewController {
-            delegate = orderTableViewController
-        }
-    }
-    
-    //...
-}
-//Delegate Class
-
-class OrderTableViewController: UITableViewController {
-
-    var menuItems = [MenuItem]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    //My Override
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
@@ -106,14 +43,45 @@ class OrderTableViewController: UITableViewController {
         cell.detailTextLabel?.text = String(format: "$%.2f",
                                             menuItem.price)
     }
+    
+    func updateBadgeNumber() {
+        let badgeValue = menuItems.count > 0 ?
+            "\(menuItems.count)" : nil
+        navigationController?.tabBarItem.badgeValue = badgeValue
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt
+        indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit
+        editingStyle: UITableViewCellEditingStyle, forRowAt indexPath:
+        IndexPath) {
+        if editingStyle == .delete {
+            menuItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            updateBadgeNumber()
+        }
+    }
     //My Overrides
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.leftBarButtonItem = editButtonItem
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
-    
-    
-    
-    
-    
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Table view data source
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

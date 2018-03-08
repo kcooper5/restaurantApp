@@ -207,6 +207,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="gZN-Z4-KwX" kind="show" identifier="ConfirmationSegue" id="TJa-Pv-FTS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -219,6 +222,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgx-lh-z4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="460" y="557.27136431784118"/>
+        </scene>
+        <!--Order Confirmation View Controller-->
+        <scene sceneID="bjz-F7-WKf">
+            <objects>
+                <viewController id="gZN-Z4-KwX" customClass="OrderConfirmationViewController" customModule="restApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NCk-Os-Lhi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxg-4I-x5x">
+                                <rect key="frame" x="166.5" y="323" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5p-NN-5Th">
+                                <rect key="frame" x="160" y="352" width="54" height="30"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="unwindToOrder:" destination="gZN-Z4-KwX" eventType="touchUpInside" id="Y5e-N9-B5c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93N-Te-ZlX">
+                                <rect key="frame" x="160" y="352" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="unwindToOrder:" destination="gZN-Z4-KwX" eventType="touchUpInside" id="Qbd-Lv-cky"/>
+                                    <action selector="unwindToOrderList:" destination="gZN-Z4-KwX" eventType="touchUpInside" id="W8L-Ty-hJX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wef-Nx-aaC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dxg-4I-x5x" secondAttribute="trailing" id="71J-9L-H1n"/>
+                            <constraint firstItem="N5p-NN-5Th" firstAttribute="centerX" secondItem="NCk-Os-Lhi" secondAttribute="centerX" id="QVA-Pg-IKb"/>
+                            <constraint firstItem="Dxg-4I-x5x" firstAttribute="centerY" secondItem="NCk-Os-Lhi" secondAttribute="centerY" id="gGF-WU-xd7"/>
+                            <constraint firstItem="Dxg-4I-x5x" firstAttribute="centerX" secondItem="NCk-Os-Lhi" secondAttribute="centerX" id="gNe-Ix-sIc"/>
+                            <constraint firstItem="N5p-NN-5Th" firstAttribute="top" secondItem="Dxg-4I-x5x" secondAttribute="bottom" constant="8" id="nfr-Ov-zo6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wef-Nx-aaC"/>
+                    </view>
+                    <connections>
+                        <outlet property="timeRemainingLabel" destination="Dxg-4I-x5x" id="SZS-O5-XDz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKo-qv-MgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="557"/>
         </scene>
         <!--Your Order-->
         <scene sceneID="i7z-Ym-QJQ">

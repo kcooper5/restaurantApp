@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16B755AF205089DC0096C0E4 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B755AE205089DC0096C0E4 /* MenuItemDetailViewController.swift */; };
+		E1CE41882050C15E003E74B3 /* OrderConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CE41872050C15E003E74B3 /* OrderConfirmationViewController.swift */; };
 		FE9A0162204FCD1800E3C873 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A0161204FCD1800E3C873 /* AppDelegate.swift */; };
 		FE9A0164204FCD1800E3C873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A0163204FCD1800E3C873 /* ViewController.swift */; };
 		FE9A0167204FCD1800E3C873 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE9A0165204FCD1800E3C873 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		16B755AE205089DC0096C0E4 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		E1CE41872050C15E003E74B3 /* OrderConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationViewController.swift; sourceTree = "<group>"; };
 		FE9A015E204FCD1800E3C873 /* restApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = restApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9A0161204FCD1800E3C873 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE9A0163204FCD1800E3C873 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				FE9A0161204FCD1800E3C873 /* AppDelegate.swift */,
 				FE9A0163204FCD1800E3C873 /* ViewController.swift */,
 				FE9A0165204FCD1800E3C873 /* Main.storyboard */,
+				E1CE41872050C15E003E74B3 /* OrderConfirmationViewController.swift */,
 				FE9A019A204FDDF600E3C873 /* MenuItem.swift */,
 				16B755AE205089DC0096C0E4 /* MenuItemDetailViewController.swift */,
 				FE9A019C204FE2A500E3C873 /* MenuController.swift */,
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CE41882050C15E003E74B3 /* OrderConfirmationViewController.swift in Sources */,
 				FE9A0164204FCD1800E3C873 /* ViewController.swift in Sources */,
 				FE9A019D204FE2A500E3C873 /* MenuController.swift in Sources */,
 				FE9A0162204FCD1800E3C873 /* AppDelegate.swift in Sources */,
