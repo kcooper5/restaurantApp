@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 class MenuController {
     let baseURL = URL(string: "http://localhost:8090/")!
     static let shared = MenuController()
@@ -19,10 +21,9 @@ class MenuController {
             (data, response, error) in
             if let data = data,
                 let jsonDictionary = try? JSONSerialization.jsonObject(with: data) as? [String:Any],
-                let categories = jsonDictionary?["categories"] as?
-                    [String] {
+                let categories = jsonDictionary?["categories"] as? [String] {
                 completion(categories)
-            } else {
+                } else {
                 completion(nil)
             }
         }
@@ -53,6 +54,7 @@ class MenuController {
             resolvingAgainstBaseURL: true)!
             components.queryItems = [URLQueryItem(name: "category", value: categoryName)]
         let menuURL = components.url!
+        
         let task = URLSession.shared.dataTask(with: menuURL) { (data, response, error) in
             var menuItems = [MenuItem]()
             if let data = data,

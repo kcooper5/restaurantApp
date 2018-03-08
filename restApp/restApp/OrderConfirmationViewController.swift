@@ -14,10 +14,14 @@ class OrderConfirmationViewController: UIViewController {
     
     @IBOutlet weak var timeRemainingLabel: UILabel!
     
+
+    @IBAction func goBackToOrder(_ sender: Any) {
+        performSegue(withIdentifier: "DismissConfirmation", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        timeRemainingLabel.text = "If you got to this stage, I am very shocked. Now you have to wait \(minutes!) minutes for whatever you just ordered."
         // Do any additional setup after loading the view.
     }
 
@@ -25,8 +29,6 @@ class OrderConfirmationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
     /*
     // MARK: - Navigation
